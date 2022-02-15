@@ -7,8 +7,7 @@ namespace StarChart.Models
 {
     public class CelestialObject
     {
-        public int ID;
-
+        public int Id;
         [Required()]
         public string Name;
         public int? OrbitedObjectID;
