@@ -101,11 +101,11 @@ namespace StarChart.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var existingObject = _context.CelestialObjects.Where(e => e.OrbitedObjectId == id).ToList();
-            if (!existingObject.Any())
+            var celestialObjects = _context.CelestialObjects.Where(e => e.Id == id || e.OrbitedObjectId == id).ToList();
+            if (!celestialObjects.Any())
                 return NotFound();
 
-            _context.CelestialObjects.RemoveRange(existingObject);
+            _context.CelestialObjects.RemoveRange(celestialObjects);
             _context.SaveChanges();
 
             return NoContent();
